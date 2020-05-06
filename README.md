@@ -1,7 +1,5 @@
 # Scene Generator for CSCD18 A1 - 2D Light Transport
 
----
-
 [Open Scene Generator](https://mustafaquraish.github.io/2dlt-scenegen)
 
 ---
