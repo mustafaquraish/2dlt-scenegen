@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSCD18 A1 Scene Generator</title>
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="p5.js"></script>
+    <script src="p5.dom.js"></script>
+    <script src="sketch.js"></script>
+    <script src="makeScene.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+
+
+
+
+  <body style="margin:20pt">
+
+    <!-- Main Body -->
+    <center> 
+      <h1>Scene Builder for 2D Light Transport - CSCD18</h1>
+      <div id='ARdiv'>
+        <button id='modalBtn'>How To Use</button>
+        <label for="dimW">Aspect Ratio</label>
+        <input type="number" id="dimW" value="1" min="1" onkeypress="return event.charCode >= 48" name="dimW" style="width:30pt">
+        &times;
+        <input type="number" id="dimH" value="1" min="1" onkeypress="return event.charCode >= 48" name="dimH" style="width:30pt">
+        <button type="submit" style="margin-left:5pt" id="setAR">Set</button>
+      </div>
+      
+      <div id='canv' style="margin-top:10pt"></div>
+
+      <button id='export'>Export</button>
+    </center> 
+
+
+
+    <!-- "How to Use" Modal -->
+  <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <center> <h2>How to use the Scene Generator</h2> </center>
+        <div id="modaltext" style='margin: 40pt; margin-bottom: 20pt;'>
+          <p> The white circles are the objects in the scene, and the yellow circle is the light source. The line coming out from the light source points in the direction it is facing.</p>
+          <p> - To add a new object into the scene, click and drag on any empty spot (gray) in the canvas.</p>
+          <p> - To move an object or the light source, click on it and move it around. You cannot change the size (yet). </p>
+          <p> - To change the material and refractive index of an object, click on it and update the values. </p>
+          <p> - To duplicate an object, hover over it and press SPACE. The copy will be on top of the object, so move it.</p>
+          <p> - To delete an object, middle-click on it. </p>
+          <p> - To change the direction of the light source, click on it. While the light source is temporarily red, you can change it's direction using the mouse. Click anywhere on the canvas to set the direction. </p>
+          <p> - By default, walls are diffuse. You will need to change the output code to change this.
+          <p> - Press the 'Export' button to get a buildScene.c file with your scene. This should work with your A1 code. </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- "Object Properties" Modal -->
+    <div id="objPropModal" class="modal">
+      <div class="modal-content-obj">
+        <span class="close">&times;</span>        
+        <center> <h2>Object Properties</h2> 
+        <div id="objProp" style='margin: 20pt; margin-bottom: 20pt;'>
+          <p>
+            <label for='matrl'>Material: </label>
+            <select single class='ioref' id='matrl'>
+              <option value="mirr">Mirror</option>
+              <option value="diff">Diffuse</option>
+              <option value="refr">Refractive</option>
+            </select> 
+          </p>
+          <p>
+            <label for='ioref'>IoRef: </label>
+            <input type="number" id="ioref" value="1.6" min="0.1" max="3.0" step=".1" style="width:50pt" class='ioref'>
+          </p>
+          <button id='updBtn'>Update</button>
+        </div>
+        </center>
+
+      </div>
+    </div>
+
+
+  </body>
+</html>
